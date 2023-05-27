@@ -5,7 +5,8 @@ canvas.style.backgroundColor = "gray"
 
 const player1 = new Player(canvas, 0,0, 0, 100, 100, "red")
 const player2 = new Player(canvas, 300,200, 0, 100, 100, "red")
-
+const bg = document.createElement('img')
+bg.src = "./algo.jpg"
 
 function config() {
     canvas.width = window.innerWidth - 1
@@ -17,6 +18,8 @@ function update() {
     // Animation loop
     requestAnimationFrame(update)
     player1.clear();
+
+    player1.context.drawImage(bg,0,-400)
     player1.gravity();
     player1.draw();
     player2.draw();
