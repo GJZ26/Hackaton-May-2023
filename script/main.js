@@ -2,7 +2,6 @@ const canvas = document.createElement("canvas")
 document.body.appendChild(canvas)
 canvas.style.backgroundColor = "gray"
 
-
 window.addEventListener("resize",()=>{
     canvas.width = window.innerWidth - 1
     canvas.height = window.innerHeight - 1
