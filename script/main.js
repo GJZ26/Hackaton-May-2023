@@ -26,33 +26,11 @@ function config() {
 function update() {
     requestAnimationFrame(update)
     player1.clear();
-    frame.frames+=1
-    if(frame.frames==1){
-        y=canvas.height;
-        minHeight=20;
-        maxHeight=200;
-        height=Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-        minGap=50;
-        maxGap=200;
-        gap=Math.floor(Math.random()*(minGap-maxGap+1)+minGap)
-
-        context=canvas.getContext("2d")
-        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y, height, 10))
-        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y-height-gap, width, gap))
-    }
-
-    
-    player1.gravity(floor.height);
+    player1.gravity();
     floor.render(0,floor.y);
-    floor.y+=1
-    floor.height+=-1
     player1.draw();
-
-    obstacles.forEach(obstacle => {
-        obstacle.y+=1
-        obstacle.render(obstacle.x , obstacle.y)
-    });
-
+    floor.y+=1
+    console.log(player1.colition(floor))
 }
 
 config()    

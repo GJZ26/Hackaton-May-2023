@@ -27,24 +27,6 @@ export class Floor{
         this.localContext.restore()
     }
     
-    crashWith(playerObject){
-        let myleft = this.x;
-        let myright = this.x + (this.width);
-        let mytop = this.y;
-        let mybottom = this.y + (this.height);
-        let otherleft = playerObject.x;
-        let otherright = playerObject.x + (playerObject.width);
-        let othertop = playerObject.y;
-        let otherbottom = playerObject.y + (playerObject.height);
-        let crash = true;
-        if ((mybottom < othertop) ||
-        (mytop > otherbottom) ||
-        (myright < otherleft) ||
-        (myleft > otherright)) {
-          crash = false;
-        }
-        return crash;
-    }
 
     setContext(context) {
         this.localContext = context;

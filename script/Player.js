@@ -23,10 +23,10 @@ export default class Player{
         this.context.fillStyle = this.color
         this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-    gravity(floor){
+    gravity(){
         this.position.y += this.speed.y;
 
-        if(this.position.y + this.height +this.speed.y+floor  < this.canvas.height){
+        if(this.position.y + this.height +this.speed.y< this.canvas.height){
             this.speed.y += this.gravitySpeed;
         }
         else{
@@ -40,6 +40,22 @@ export default class Player{
 
     move(x,y){  
 
+    }
+
+    colition(object){
+        let playerTop=this.y
+        let playerBottom=this.y+this.height
+        let playerLeft=this.x
+        let playerRight=this.x+this.width
+        let objectTop=object.y
+        let objectBottom=object.y+object.height
+        let objectLeft=object.x
+        let objectRight=object.x+object.width
+        if((playerBottom<objectTop)||(playerTop>objectBottom)||(playerRight<objectLeft)||(playerLeft>objectRight)){
+            this.color="blue";
+        }
+        this.color="green";
+        
     }
     
 
