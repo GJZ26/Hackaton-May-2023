@@ -25,30 +25,33 @@ function config() {
 
 function update() {
     requestAnimationFrame(update)
-    player1.gravity(floor.height);
     player1.clear();
     frame.frames+=1
-    if(frame.frames==1 || setInterval){
+    if(frame.frames==1){
         y=canvas.height;
-        minWidth=20;
-        maxWidth=200;
-        width=Math.floor(Math.random()*(maxWidth-minWidth+1)+minWidth);
+        minHeight=20;
+        maxHeight=200;
+        height=Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
         minGap=50;
         maxGap=200;
         gap=Math.floor(Math.random()*(minGap-maxGap+1)+minGap)
 
         context=canvas.getContext("2d")
-        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y, width, 10))
-        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y-width-gap, width, gap))
+        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y, height, 10))
+        obstacles.push(new obstacles(canvas, "#eb8b1f",0, y-height-gap, width, gap))
     }
+
+    
+    player1.gravity(floor.height);
+    floor.render(0,floor.y);
+    floor.y+=1
+    floor.height+=-1
+    player1.draw();
 
     obstacles.forEach(obstacle => {
         obstacle.y+=1
-        obstacle.render(0,0)
+        obstacle.render(obstacle.x , obstacle.y)
     });
-    floor.render(0,floor.y);
-    floor.y+=1
-    player1.draw();
 
 }
 
