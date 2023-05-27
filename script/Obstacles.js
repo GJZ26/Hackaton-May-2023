@@ -3,7 +3,7 @@ export class Obstacles{
         /**
      * @type {CanvasRenderingContext2D}
      */
-    constructor(canvas,x,y,color="#eb8b1f",width, height){
+    constructor(canvas,color,x,y,width, height){
         this.canvas=canvas
         this.x=x
         this.y=y

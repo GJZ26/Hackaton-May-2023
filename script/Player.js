@@ -23,9 +23,10 @@ export default class Player{
         this.context.fillStyle = this.color
         this.context.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
-    gravity(){
+    gravity(floor){
         this.position.y += this.speed.y;
-        if(this.position.y + this.height +this.speed.y < this.canvas.height){
+
+        if(this.position.y + this.height +this.speed.y+floor  < this.canvas.height){
             this.speed.y += this.gravitySpeed;
         }
         else{
