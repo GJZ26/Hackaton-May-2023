@@ -22,6 +22,7 @@ function update() {
     player2.draw();
     player2.gravity();
     player1.move();
+    player2.move();
 }
 
 config()
@@ -31,5 +32,13 @@ window.addEventListener("keydown", (e)=>{
 })
 
 window.addEventListener("keyup", (e)=>{
-    player1.unpressKey(e.key, 0)
+    player1.unpressKey(e.key)
+})
+
+window.addEventListener("keydown", (e)=>{
+    player2.pressKey2(e.key)
+})
+
+window.addEventListener("keyup", (e)=>{
+    player2.unpressKey2(e.key)
 })

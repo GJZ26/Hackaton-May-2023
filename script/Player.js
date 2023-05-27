@@ -1,6 +1,6 @@
 export default class Player{
     gravitySpeed = 0.5;
-    constructor(canvas, x , y ,speed, width, height, color){
+    constructor(canvas, x , y ,speed, width, height, color,){
         this.canvas = canvas;
         this.speed ={
             x: 0,
@@ -44,12 +44,21 @@ export default class Player{
         },
         ArrowLeft:{
             pressed:false,
+        },
+        d:{
+            pressed:false,
+        },
+        a:{
+            pressed:false,
         }
     }
     move(){
         this.speed.x = 0
         if(this.keys.ArrowRight.pressed) this.speed.x = -10
         else if (this.keys.ArrowLeft.pressed) this.speed.x = 10
+
+        if(this.keys.d.pressed) this.speed.x = 10
+        else if (this.keys.a.pressed) this.speed.x = -10
     }
 
     pressKey(keydow){  
@@ -72,6 +81,30 @@ export default class Player{
             break;
             case "ArrowLeft":
                 this.keys.ArrowRight.pressed = false;
+            break;
+        }
+    }
+    pressKey2(keydow){ 
+        console.log(keydow) 
+        switch(keydow){
+            case "a":
+               this.keys.a.pressed = true;
+            break;
+            case "d":
+                this.keys.d.pressed = true;
+            break;
+            case "w":
+                this.speed.y = -20
+            break;
+        }
+    }
+    unpressKey2(keydow){  
+        switch(keydow){
+            case "a":
+               this.keys.a.pressed = false;
+            break;
+            case "d":
+                this.keys.d.pressed = false;
             break;
         }
     }
