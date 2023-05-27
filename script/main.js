@@ -3,7 +3,8 @@ const canvas = document.createElement("canvas")
 document.body.appendChild(canvas)
 canvas.style.backgroundColor = "gray"
 
-const player1 = new Player(canvas, 0,0, 3.8, 100, 100, "red")
+const player1 = new Player(canvas, 0,0, 0, 100, 100, "red")
+const player2 = new Player(canvas, 300,200, 0, 100, 100, "red")
 
 
 function config() {
@@ -15,10 +16,20 @@ function config() {
 function update() {
     // Animation loop
     requestAnimationFrame(update)
-    player1.gravity();
     player1.clear();
+    player1.gravity();
     player1.draw();
-
+    player2.draw();
+    player2.gravity();
+    player1.move();
 }
 
 config()
+
+window.addEventListener("keydown", (e)=>{
+    player1.pressKey(e.key)
+})
+
+window.addEventListener("keyup", (e)=>{
+    player1.unpressKey(e.key, 0)
+})

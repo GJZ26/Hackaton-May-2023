@@ -25,6 +25,7 @@ export default class Player{
     }
     gravity(){
         this.position.y += this.speed.y;
+        this.position.x += this.speed.x;
         if(this.position.y + this.height +this.speed.y < this.canvas.height){
             this.speed.y += this.gravitySpeed;
         }
@@ -37,10 +38,45 @@ export default class Player{
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    move(x,y){  
+    keys={
+        ArrowRight:{
+            pressed:false,
+        },
+        ArrowLeft:{
+            pressed:false,
+        }
+    }
+    move(){
+        this.speed.x = 0
+        if(this.keys.ArrowRight.pressed) this.speed.x = -10
+        else if (this.keys.ArrowLeft.pressed) this.speed.x = 10
+    }
 
+    pressKey(keydow){  
+        switch(keydow){
+            case "ArrowRight":
+               this.keys.ArrowLeft.pressed = true;
+            break;
+            case "ArrowLeft":
+                this.keys.ArrowRight.pressed = true;
+            break;
+            case "ArrowUp":
+                this.speed.y = -20
+            break;
+        }
+    }
+    unpressKey(keydow){  
+        switch(keydow){
+            case "ArrowRight":
+               this.keys.ArrowLeft.pressed = false;
+            break;
+            case "ArrowLeft":
+                this.keys.ArrowRight.pressed = false;
+            break;
+        }
     }
     
 
 }
+
 
